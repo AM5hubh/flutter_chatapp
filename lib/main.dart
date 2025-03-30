@@ -1,8 +1,14 @@
-import 'package:chatapp/pages/login_page.dart';
+import 'package:chatapp/auth/login_or_signup.dart';
+import 'package:chatapp/firebase_options.dart';
 import 'package:chatapp/themes/light_mode.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(MyApp());
 }
 
@@ -13,8 +19,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "ChatApp",
-      debugShowCheckedModeBanner: false ,
-      home: LoginPage(),
+      debugShowCheckedModeBanner: false,
+      home: LoginOrSignup(),
       theme: lightMode,
     );
   }

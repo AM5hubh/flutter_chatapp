@@ -2,15 +2,16 @@ import 'package:chatapp/components/my_button.dart';
 import 'package:chatapp/components/my_textfield.dart';
 import 'package:flutter/material.dart';
 
-class LoginPage extends StatelessWidget {
+class SignupPage extends StatelessWidget {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _conpasswordController = TextEditingController();
+
   final void Function() onTapfunc;
+  SignupPage({super.key, required this.onTapfunc});
 
-  LoginPage({super.key, required this.onTapfunc});
-
-  void login() {
-    print("Login button pressed");
+  void register() {
+    print("Register button pressed");
   }
 
   @override
@@ -52,14 +53,22 @@ class LoginPage extends StatelessWidget {
               obscureText: true,
               controller: _passwordController,
             ),
+            SizedBox(
+              height: 4,
+            ),
+            MyTextfield(
+              hintText: "Confirm password",
+              obscureText: true,
+              controller: _conpasswordController,
+            ),
 
             SizedBox(
               height: 20,
             ),
             //Login button
             MyButton(
-              buttontext: "Login",
-              onTapfunc: login,
+              buttontext: "Sign up",
+              onTapfunc: register,
             ),
             SizedBox(
               height: 12,
@@ -67,10 +76,10 @@ class LoginPage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text("Don't have an account? "),
+                Text("Already have an account? "),
                 GestureDetector(
                   onTap: onTapfunc,
-                  child: Text("Sign up",
+                  child: Text("Login",
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         color: Theme.of(context).colorScheme.primary,
