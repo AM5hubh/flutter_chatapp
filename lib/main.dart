@@ -1,3 +1,4 @@
+import 'package:chatapp/auth/auth_gate.dart';
 import 'package:chatapp/auth/login_or_signup.dart';
 import 'package:chatapp/firebase_options.dart';
 import 'package:chatapp/themes/light_mode.dart';
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: "ChatApp",
       debugShowCheckedModeBanner: false,
-      home: LoginOrSignup(),
+      home: AuthGate(),
       theme: lightMode,
     );
   }

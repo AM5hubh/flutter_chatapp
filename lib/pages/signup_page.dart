@@ -1,3 +1,4 @@
+import 'package:chatapp/auth/auth_service.dart';
 import 'package:chatapp/components/my_button.dart';
 import 'package:chatapp/components/my_textfield.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +12,18 @@ class SignupPage extends StatelessWidget {
   SignupPage({super.key, required this.onTapfunc});
 
   void register() {
-    print("Register button pressed");
+    final authservice = AuthService();
+
+    try {
+      if (_passwordController.text == _conpasswordController.text) {
+        authservice.signUpWithEmailAndPassword(
+            _emailController.text, _passwordController.text);
+      } else {
+        print("Passwords do not match");
+      }
+    } catch (e) {
+      print("Error: $e");
+    }
   }
 
   @override

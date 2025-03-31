@@ -1,3 +1,4 @@
+import 'package:chatapp/auth/auth_service.dart';
 import 'package:chatapp/components/my_button.dart';
 import 'package:chatapp/components/my_textfield.dart';
 import 'package:flutter/material.dart';
@@ -9,8 +10,15 @@ class LoginPage extends StatelessWidget {
 
   LoginPage({super.key, required this.onTapfunc});
 
-  void login() {
-    print("Login button pressed");
+  void login() async {
+    final authservice = AuthService();
+
+    try {
+      await authservice.signInWithEmailAndPassword(
+          _emailController.text, _passwordController.text);
+    } catch (e) {
+      print("Error: $e");
+    }
   }
 
   @override
